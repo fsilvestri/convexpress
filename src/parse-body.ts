@@ -1,11 +1,12 @@
 import {json} from "body-parser";
-import {hasBody} from "type-is";
+import {RequestHandler} from "express";
+// import {hasBody} from "type-is";
 
-export default function parseBody () {
+export default function parseBody () :RequestHandler {
     const jsonMiddleware = json();
     return (req, res, next) => {
 
-        const reqHasBody = hasBody(req);
+        const reqHasBody = true;
         const reqBodyIsEmpty = (parseInt(req.headers["content-length"]) === 0);
 
         /*
